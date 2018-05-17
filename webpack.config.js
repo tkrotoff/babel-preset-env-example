@@ -27,7 +27,7 @@ module.exports = {
           presets: [
             ['env', {
               targets: {
-                browsers: ['> 1%']
+                browsers: ['> 1% in FR']
               },
               useBuiltIns: true,
               debug: true
