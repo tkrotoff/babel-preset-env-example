@@ -23,8 +23,9 @@ import 'babel-polyfill'
 ## Findings
 
 - Always use `import 'babel-polyfill'`, without you don't get polyfills for `Object.assign()`, `Promise`... from [core-js](https://github.com/zloirock/core-js), only Babel plugins (e.g `transform-*`)
+- `useBuiltIns: true` includes what's needed given `browsers: [...]` instead of including everything from [core-js](https://github.com/zloirock/core-js)
+- Do not use just `last n versions`, prefer something like [`> 2% in US`](http://browserl.ist/?q=%3E+2%25+in+US), see https://github.com/browserslist/browserslist/tree/3.2.7#best-practices and https://jamie.build/last-2-versions
 - Do not write inside webpack.config.js `entry: ['babel-polyfill', './App.js']` as suggested [here](https://babeljs.io/docs/usage/polyfill/#usage-in-node--browserify--webpack), use `import 'babel-polyfill'` + `entry: './App.js'`
-- `useBuiltIns: true` includes what's needed given `targets: {browsers: [...]}` instead of including everything from [core-js](https://github.com/zloirock/core-js)
 
 ## Output
 
