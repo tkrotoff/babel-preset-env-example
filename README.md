@@ -16,7 +16,7 @@ presets: [
 ```
 
 ```JS
-// App.js
+// First line inside your app (App.js for this example)
 import 'babel-polyfill'
 ```
 
@@ -29,7 +29,20 @@ import 'babel-polyfill'
 
 ## Output
 
-### Without `babel-polyfill`
+### Without `import 'babel-polyfill'`
+
+Broken: no polyfill included
+
+#### Webpack output
+
+```
+$ yarn build:webpack:dev
+...
+build/App.js   5.16 KiB
+...
+```
+
+#### Babel output
 
 <details>
 <summary>$ yarn build:babel</summary>
@@ -103,8 +116,20 @@ console.log(promise1);
 ```
 </details>
 
+### With `import 'babel-polyfill'` + without `useBuiltIns`
 
-### Without `useBuiltIns`
+Not optimized: includes all polyfills
+
+#### Webpack output
+
+```
+$ yarn build:webpack:dev
+...
+build/App.js    950 KiB
+...
+```
+
+#### Babel output
 
 <details>
 <summary>$ yarn build:babel</summary>
@@ -180,7 +205,20 @@ console.log(promise1);
 ```
 </details>
 
-### With `useBuiltIns`
+### With `import 'babel-polyfill'` + with `useBuiltIns`
+
+Perfect: includes only the polyfills needed
+
+#### Webpack output
+
+```
+$ yarn build:webpack:dev
+...
+build/App.js    656 KiB
+...
+```
+
+#### Babel output
 
 <details>
 <summary>$ yarn build:babel</summary>
@@ -540,3 +578,14 @@ console.log(promise1);
 ```
 </details>
 
+
+### Webpack `entry: ['babel-polyfill', './App.js']` + without `import 'babel-polyfill'` + with `useBuiltIns`
+
+Broken: all polyfills included despite `useBuiltIns`
+
+```
+$ yarn build:webpack:dev
+...
+build/App.js    950 KiB
+...
+```
