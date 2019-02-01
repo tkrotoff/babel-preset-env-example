@@ -10,8 +10,7 @@ module.exports = {
     filename: '[name].js'
   },
 
-  plugins: [
-  ],
+  plugins: [],
 
   resolve: {
     extensions: ['.js']
@@ -22,22 +21,14 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        /* .babelrc is not required, instead you can pass options to babel-loader:
-        options: {
-          presets: [
-            ['env', {
-              targets: {
-                browsers: ['> 1% in FR']
-              },
-              useBuiltIns: true,
-              debug: true
-            }]
-          ]
-        }*/
+        loader: 'babel-loader'
       },
       { test: /\.js$/, loader: 'source-map-loader' },
-      { test: /\.(html|css|png)$/, loader: 'file-loader', options: {name: '[path][name].[ext]'} }
+      {
+        test: /\.(html|css|png)$/,
+        loader: 'file-loader',
+        options: { name: '[path][name].[ext]' }
+      }
     ]
   }
 };
